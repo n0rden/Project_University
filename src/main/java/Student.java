@@ -12,20 +12,24 @@ public class Student {
         this.avgExamScore = avgExamScore;
     }
 
-    public void setFullName(String fullName) {
+    public Student setFullName(String fullName) {
         this.fullName = fullName;
+        return this;
     }
 
-    public void setUniversityId(String universityId) {
+    public Student setUniversityId(String universityId) {
         this.universityId = universityId;
+        return this;
     }
 
-    public void setCurrentCourseNumber(int currentCourseNumber) {
+    public Student setCurrentCourseNumber(int currentCourseNumber) {
         this.currentCourseNumber = currentCourseNumber;
+        return this;
     }
 
-    public void setAvgExamScore(float avgExamScore) {
+    public Student setAvgExamScore(float avgExamScore) {
         this.avgExamScore = avgExamScore;
+        return this;
     }
 
     public String getFullName() {
