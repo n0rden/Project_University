@@ -6,6 +6,9 @@ public class University {
     private int yearOfFoundation;
     private StudyProfile mainProfile;
 
+    public University(String toString, String s, String string, double numericCellValue) {
+    }
+
     public University(String id, String fullName, String shortName, int yearOfFoundation, StudyProfile mainProfile) {
         this.id = id;
         this.fullName = fullName;
@@ -61,8 +64,11 @@ public class University {
 
     @Override
     public String toString() {
-        return String.format("Id: %s, full name: %s, short name: %s," +
-                " year of foundation: %d, main profile: %s",
+        return String.format("Id: %s\n" +
+                        "full name: %s\n" +
+                        "short name: %s\n" +
+                        "year of foundation: %d\n" +
+                        "main profile: %s\n",
                 id, fullName, shortName, yearOfFoundation, mainProfile.getSpecialty());
     }
 }

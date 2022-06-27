@@ -5,6 +5,8 @@ public class Student {
     private int currentCourseNumber;
     private float avgExamScore;
 
+    public Student() {
+    }
     public Student(String fullName, String universityId, int currentCourseNumber, float avgExamScore) {
         this.fullName = fullName;
         this.universityId = universityId;
@@ -50,7 +52,10 @@ public class Student {
 
     @Override
     public String toString() {
-        return String.format("Full name: %s, university ID: %s, current course number: %d, avg exam score: %f",
+        return String.format("Full name: %s\n" +
+                        "university ID: %s\n" +
+                        "current course number: %d\n" +
+                        "avg exam score: %.1f\n",
                 fullName, universityId, currentCourseNumber, avgExamScore);
     }
 }

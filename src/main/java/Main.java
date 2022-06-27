@@ -1,9 +1,17 @@
+import java.util.List;
+
 public class Main {
     public static void main(String[] args) {
-        University university = new University("1",
-                "Mile Kolin", "Mike", 2010, StudyProfile.biology);
-        Student student1 = new Student("Mike Kolin", "1", 10, 4.986f);
-        System.out.println(university.toString());
-        System.out.println(student1.toString());
+        String fileName = "D:\\java_proj\\mvn_proj\\src\\PoiTest\\src\\main\\resources\\universityInfo.xlsx";
+        List<University> universityList = ExcelReader.universityReader(fileName);
+        List<Student> studentList = ExcelReader.studentsReader(fileName);
+
+        for (University university : universityList) {
+            System.out.println(university.toString());
+        }
+
+        for (Student student : studentList) {
+            System.out.println(student.toString());
+        }
     }
 }

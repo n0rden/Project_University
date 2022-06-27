@@ -1,11 +1,13 @@
 enum StudyProfile {
 
-    physics ("физика"),
-    chemistry ("химия"),
-    history ("история"),
-    philosophy ("философия"),
-    biology ("биология"),
-    architecture ("архитектура");
+    PHYSICS("физика"),
+    CHEMISTRY("химия"),
+    HISTORY("история"),
+    PHILOSOPHY("философия"),
+    LINGUISTICS("лингвистика"),
+    MEDICINE("медицина"),
+    MATHEMATICS("математика");
+
     private String specialty;
 
     StudyProfile(String specialty) {
