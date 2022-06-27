@@ -7,9 +7,9 @@ public class Student {
 
     public Student() {
     }
-    public Student(String fullName, String universityId, int currentCourseNumber, float avgExamScore) {
-        this.fullName = fullName;
+    public Student(String universityId, String fullName, int currentCourseNumber, float avgExamScore) {
         this.universityId = universityId;
+        this.fullName = fullName;
         this.currentCourseNumber = currentCourseNumber;
         this.avgExamScore = avgExamScore;
     }
