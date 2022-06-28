@@ -1,4 +1,4 @@
-enum StudyProfile {
+public enum StudyProfile {
 
     PHYSICS("физика"),
     CHEMISTRY("химия"),

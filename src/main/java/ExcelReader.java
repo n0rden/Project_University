@@ -1,3 +1,5 @@
+//Парсер Excel таблиц
+
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -12,7 +14,6 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 public class ExcelReader {
 
     private ExcelReader() {
-
     }
 
     public static List<Student> studentsReader(String fileName) {
@@ -38,7 +39,6 @@ public class ExcelReader {
             e.printStackTrace();
         }
         return studentsList;
-
     }
 
     public static List<University> universityReader(String fileName) {

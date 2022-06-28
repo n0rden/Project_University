@@ -64,11 +64,12 @@ public class University {
 
     @Override
     public String toString() {
-        return String.format("Id: %s\n" +
-                        "full name: %s\n" +
-                        "short name: %s\n" +
-                        "year of foundation: %d\n" +
-                        "main profile: %s\n",
-                id, fullName, shortName, yearOfFoundation, mainProfile.getSpecialty());
+        return String.format("""
+                        Id: %s
+                        full name: %s
+                        short name: %s
+                        year of foundation: %d
+                        main profile: %s
+                        """, id, fullName, shortName, yearOfFoundation, mainProfile.getSpecialty());
     }
 }

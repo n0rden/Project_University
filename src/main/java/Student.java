@@ -52,10 +52,11 @@ public class Student {
 
     @Override
     public String toString() {
-        return String.format("Full name: %s\n" +
-                        "university ID: %s\n" +
-                        "current course number: %d\n" +
-                        "avg exam score: %.1f\n",
-                fullName, universityId, currentCourseNumber, avgExamScore);
+        return String.format("""
+                        Full name: %s
+                        university ID: %s
+                        current course number: %d
+                        avg exam score: %.1f
+                        """, fullName, universityId, currentCourseNumber, avgExamScore);
     }
 }

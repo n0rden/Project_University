@@ -1,0 +1,6 @@
+public enum EStudentsComparators {
+    SORTBYNAME,
+    SORTBYUNIVERSITYID,
+    SORTBYCOURSENUMBER,
+    SORTBYAVGSCORE
+}
