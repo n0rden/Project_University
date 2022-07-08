@@ -1,9 +1,15 @@
+package utils;
+
+import comparators.*;
+import enums.StudentsComparators;
+import enums.UniversityComparators;
+
 public class GetComparatorFromEnum {
 
     private GetComparatorFromEnum() {
     }
 
-    public static IStudentComparator getStudentComparator(EStudentsComparators comparator) {
+    public static StudentComparator getStudentComparator(StudentsComparators comparator) {
         switch (comparator) {
             case SORTBYNAME -> {
                 return new StFullNameComp();
@@ -23,7 +29,7 @@ public class GetComparatorFromEnum {
         }
     }
 
-    public static IUniversityComparator getUniversityComparator(EUniversityComparators comparator) {
+    public static UniversityComparator getUniversityComparator(UniversityComparators comparator) {
         switch (comparator) {
             case SORTBYID -> {
                 return new UnIdComp();

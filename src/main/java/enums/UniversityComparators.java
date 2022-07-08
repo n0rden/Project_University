@@ -1,4 +1,6 @@
-public enum EUniversityComparators {
+package enums;
+
+public enum UniversityComparators {
     SORTBYID,
     SOTRBYFULLNAME,
     SORTBYSHORTNAME,

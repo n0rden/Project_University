@@ -1,4 +1,6 @@
-public enum EStudentsComparators {
+package enums;
+
+public enum StudentsComparators {
     SORTBYNAME,
     SORTBYUNIVERSITYID,
     SORTBYCOURSENUMBER,

@@ -1,8 +1,16 @@
+package models;
+
+import com.google.gson.annotations.SerializedName;
+
 public class Student {
 
+    @SerializedName("Full name")
     private String fullName;
+    @SerializedName("University ID")
     private String universityId;
+    @SerializedName("Course number")
     private int currentCourseNumber;
+    @SerializedName("Average score")
     private float avgExamScore;
 
     public Student() {

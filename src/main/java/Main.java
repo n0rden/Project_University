@@ -1,4 +1,7 @@
-import java.util.ArrayList;
+import models.Student;
+import models.University;
+import utils.ExcelReader;
+import utils.JsonUtil;
 import java.util.List;
 
 public class Main {
@@ -6,29 +9,36 @@ public class Main {
         String fileName = "src\\main\\resources\\universityInfo.xlsx";
 
         //Создаем и заполняем коллекции Студентов и Университетов данными, распарсивая Excel таблицы
-        List<University> universityList = ExcelReader.universityReader(fileName);
-        List<Student> studentList = ExcelReader.studentsReader(fileName);
+        List<Student> studentsList = ExcelReader.studentsReader(fileName);
+        List<University> universitiesList = ExcelReader.universityReader(fileName);
 
-        //Создаем коллекции компараторов для сортировки коллекций Студентов и Университетов
-        List<IStudentComparator> studentCompList = new ArrayList<>();
-        List<IUniversityComparator> universityCompList = new ArrayList<>();
+        // Сериализуем коллекции Студентов и Университетов
+        String studentsJson = JsonUtil.studentsListSerialization(studentsList);
+        String universitiesJson = JsonUtil.universityListSerialization(universitiesList);
 
-        //Заполняем коллекции компараторов компараторами с помощью Enum
-        for (EStudentsComparators sc : EStudentsComparators.values()) {
-            studentCompList.add(GetComparatorFromEnum.getStudentComparator(sc));
-        }
+        // Десериализуем коллекции Студентов и Университетов
+        List<Student> studentsDeserializedList = JsonUtil.studentsListDeserialization(studentsJson);
+        List<University> universitiesDeserializedList = JsonUtil.universityListDeserialization(universitiesJson);
 
-        for (EUniversityComparators uc : EUniversityComparators.values()) {
-            universityCompList.add(GetComparatorFromEnum.getUniversityComparator(uc));
-        }
+        // Проверяем корректность десериализации коллекций
+        System.out.println(studentsList.size() == studentsDeserializedList.size()
+                ? "Students list corrected deserialize"
+                : "Students list uncorrected deserialize");
+        System.out.println(universitiesList.size() == universitiesDeserializedList.size()
+                ? "Universities list corrected deserialize"
+                : "Universities list uncorrected deserialize");
 
-        //Сортируем коллекции Студентов и Университетов и выводим их в консоль
-        for (IStudentComparator sc : studentCompList) {
-            studentList.stream().sorted(sc).forEach(System.out::println);
-        }
+        // Сериализуем четные элементы коллекций, выводим их на печать, десериализуем, выводим на печать
+        studentsList.stream().filter(x -> studentsList.indexOf(x) % 2 == 0).forEach(student -> {
+            String studentData = JsonUtil.studentSerialization(student);
+            System.out.println(studentData);
+            System.out.println(JsonUtil.studentDeserialization(studentData));
+        });
 
-        for (IUniversityComparator uc : universityCompList) {
-            universityList.stream().sorted(uc).forEach(System.out::println);
-        }
+        universitiesList.stream().filter(x -> universitiesList.indexOf(x) % 2 == 0).forEach(university -> {
+            String universityData = JsonUtil.universitySerialization(university);
+            System.out.println(universityData);
+            System.out.println(JsonUtil.universityDeserialization(universityData));
+        });
     }
 }

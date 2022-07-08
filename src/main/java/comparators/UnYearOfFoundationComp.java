@@ -1,4 +1,7 @@
-public class UnYearOfFoundationComp implements IUniversityComparator {
+package comparators;
+
+import models.University;
+public class UnYearOfFoundationComp implements UniversityComparator {
     @Override
     public int compare(University o1, University o2) {
         return Integer.compare(o1.getYearOfFoundation(), o2.getYearOfFoundation());
