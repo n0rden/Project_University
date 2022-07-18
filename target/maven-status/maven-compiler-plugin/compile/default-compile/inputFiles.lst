@@ -6,12 +6,15 @@ D:\java_proj\mvn_proj\src\University\src\main\java\comparators\StCurrentCourseNu
 D:\java_proj\mvn_proj\src\University\src\main\java\comparators\StUniversityIdComp.java
 D:\java_proj\mvn_proj\src\University\src\main\java\comparators\UnFullNameComp.java
 D:\java_proj\mvn_proj\src\University\src\main\java\comparators\UnMainProfileComp.java
+D:\java_proj\mvn_proj\src\University\src\main\java\utils\XlsWriter.java
 D:\java_proj\mvn_proj\src\University\src\main\java\enums\StudentsComparators.java
 D:\java_proj\mvn_proj\src\University\src\main\java\enums\UniversityComparators.java
+D:\java_proj\mvn_proj\src\University\src\main\java\utils\GetStatistics.java
 D:\java_proj\mvn_proj\src\University\src\main\java\comparators\UniversityComparator.java
 D:\java_proj\mvn_proj\src\University\src\main\java\comparators\StFullNameComp.java
 D:\java_proj\mvn_proj\src\University\src\main\java\models\Student.java
 D:\java_proj\mvn_proj\src\University\src\main\java\models\University.java
+D:\java_proj\mvn_proj\src\University\src\main\java\models\Statistics.java
 D:\java_proj\mvn_proj\src\University\src\main\java\utils\ExcelReader.java
 D:\java_proj\mvn_proj\src\University\src\main\java\comparators\StAvgExamScoreComp.java
 D:\java_proj\mvn_proj\src\University\src\main\java\utils\JsonUtil.java
