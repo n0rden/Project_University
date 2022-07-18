@@ -13,7 +13,7 @@ public class University {
     private String shortName;
     @SerializedName("Foundation year")
     private int yearOfFoundation;
-    @SerializedName("Profile")
+    @SerializedName("Study profile")
     private StudyProfile mainProfile;
 
     public University(String toString, String s, String string, double numericCellValue) {
