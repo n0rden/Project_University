@@ -5,6 +5,8 @@ import models.Statistics;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.usermodel.XSSFCell;
@@ -14,10 +16,14 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 public class XlsWriter {
 
+    private static Logger logger = Logger.getLogger(XlsWriter.class.getName());
+
     private XlsWriter() {
     }
 
     public static void tableGenerateAndWrite(List<Statistics> statisticsList, String fileName) {
+
+        logger.info("Start building a XLSX file");
 
         final short blackColor = IndexedColors.BLACK.getIndex();
         // толщина границ ячейки
@@ -108,14 +114,15 @@ public class XlsWriter {
             XSSFCell cell4 = plainRow.createCell(4);
             cell4.setCellStyle(otherCellsStyle);
             cell4.setCellType(CellType.NUMERIC);
-            cell4.setCellValue(statisticsList.get(i - 1).getAvgExamScore().orElse ((double) 0));
+            cell4.setCellValue(statisticsList.get(i - 1).getAvgExamScore().orElse((double) 0));
         }
 
         try (FileOutputStream fileOut = new FileOutputStream(fileName)) {
             workbook.write(fileOut);
             workbook.close();
-            // System.out.println("File save correctly");
+            logger.info("Result XLSX file saved correctly");
         } catch (IOException e) {
+            logger.log(Level.SEVERE, "Result XLSX file write error message", e);
             e.printStackTrace();
         }
     }

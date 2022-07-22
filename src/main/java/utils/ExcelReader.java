@@ -1,4 +1,6 @@
-package utils;//Парсер Excel таблиц
+// Парсер Excel таблиц
+
+package utils;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -6,6 +8,8 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import enums.StudyProfile;
 import models.Student;
@@ -16,10 +20,13 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 public class ExcelReader {
 
+    private static Logger logger = Logger.getLogger(ExcelReader.class.getName());
+
     private ExcelReader() {
     }
 
     public static List<Student> studentsReader(String fileName) {
+        logger.info("Start parsing \"Students\" from XLSX file");
         List<Student> studentsList = new ArrayList<>();
 
         try (InputStream is = new FileInputStream(fileName)) {
@@ -39,12 +46,14 @@ public class ExcelReader {
                 }
             }
         } catch (IOException e) {
+            logger.log(Level.SEVERE, "Student parsing error message", e);
             e.printStackTrace();
         }
         return studentsList;
     }
 
     public static List<University> universityReader(String fileName) {
+        logger.info("Start parsing \"University\" from XLSX file");
         List<University> universityList = new ArrayList<>();
 
         try (InputStream is = new FileInputStream(fileName)) {
@@ -65,6 +74,7 @@ public class ExcelReader {
                 }
             }
         } catch (IOException e) {
+            logger.log(Level.SEVERE, "University parsing error message", e);
             e.printStackTrace();
         }
 

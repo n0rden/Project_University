@@ -4,26 +4,27 @@ import enums.StudyProfile;
 import models.Statistics;
 import models.Student;
 import models.University;
-
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
-import java.util.logging.Logger;
 
-public class GetStatistics {
+public class GetStatisticsStream {
 
-    private static Logger logger = Logger.getLogger(GetStatistics.class.getName());
-
-    private GetStatistics() {
+    private GetStatisticsStream() {
     }
-
-    // Переделать с использованием Stream API
+    // Переделать с использоавнием Stream API
     public static List<Statistics> getStatistics(List<University> universities, List<Student> students) {
 
-        logger.info("Start collect the statistics");
         List<Statistics> statisticsList = new ArrayList<>();
-        int universitiesCount = 0;
+        //universities.stream().filter(x -> (students.stream().filter(y -> y.getUniversityId().equals(x.getId()))));
+
+        /* Arrays.stream(StudyProfile.values())
+                .filter(e -> e.equals(universities.stream().peek(a -> a.getMainProfile())))
+                .findAny()
+                .orElseThrow(() -> new IllegalStateException(String.format("Unsupported type"))); */
+        /* int universitiesCount = 0;
         int studentsCount = 0;
         double examScore = 0;
 
@@ -61,7 +62,7 @@ public class GetStatistics {
                 examScore = 0;
             }
             universitiesCount = 0;
-        }
+        }*/
         return statisticsList;
     }
 }

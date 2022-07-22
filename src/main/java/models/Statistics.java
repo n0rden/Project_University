@@ -1,7 +1,6 @@
 package models;
 
 import enums.StudyProfile;
-
 import java.util.Optional;
 
 public class Statistics {
@@ -12,9 +11,6 @@ public class Statistics {
     int numberOfUniversitiesByProfile;
     String universityName;
 
-    public Statistics() {
-
-    }
 
     public Statistics setMainProfile(StudyProfile mainProfile) {
         this.mainProfile = mainProfile;
