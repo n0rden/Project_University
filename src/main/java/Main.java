@@ -21,26 +21,26 @@ public class Main {
     private static Logger logger = Logger.getLogger(Main.class.getName());
 
     public static void main(String[] args) throws JAXBException {
-        File file = new File("resultXML.xml");
-
         logger.info("Start program");
 
-        String fileName = "src\\main\\resources\\universityInfo.xlsx";
-        String fileNameToSave = "src\\main\\resources\\statistics.xlsx";
+        String sourceXlsFile = "src\\main\\resources\\universityInfo.xlsx";
+        String outputXlsFile = "src\\main\\resources\\statistics.xlsx";
+        String outputXmlFile = "src\\main\\xmlReqs";
+        String outputJsonFile = "src\\main\\jsonReqs";
 
         // Создаем и заполняем коллекции Студентов и Университетов данными, распарсивая Excel таблицы
-        List<Student> studentsList = ExcelReader.studentsReader(fileName);
-        List<University> universitiesList = ExcelReader.universityReader(fileName);
+        List<Student> studentsList = ExcelReader.studentsReader(sourceXlsFile);
+        List<University> universitiesList = ExcelReader.universityReader(sourceXlsFile);
 
         // Генерируем элементы статистики и записываем их в xlsx файл
         List<Statistics> statisticsList = GetStatistics.getStatistics(universitiesList, studentsList);
-        XlsWriter.tableGenerateAndWrite(statisticsList, fileNameToSave);
+        XlsWriter.tableGenerateAndWrite(statisticsList, outputXlsFile);
 
         // Создаем объект XML структуры
         XmlStructure xmlObject = new XmlStructure(studentsList, universitiesList, statisticsList);
 
         // Генерируем XML файл из объекта XML структуры
-        XmlWriter.saveObject(file, xmlObject);
+        XmlWriter.saveObject(outputXmlFile, xmlObject);
         //GetStatisticsStream.getStatistics(universitiesList, studentsList);
     }
 }
