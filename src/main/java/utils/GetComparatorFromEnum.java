@@ -15,48 +15,46 @@ public class GetComparatorFromEnum {
 
     public static StudentComparator getStudentComparator(StudentsComparators comparator) {
 
+        StudentComparator studentComparator = null;
         logger.info("Choosing a \"Student\" comparator");
         switch (comparator) {
-            case SORTBYNAME -> {
-                return new StFullNameComp();
-            }
-            case SORTBYUNIVERSITYID -> {
-                return new StUniversityIdComp();
-            }
-            case SORTBYCOURSENUMBER -> {
-                return new StCurrentCourseNumberComp();
-            }
-            case SORTBYAVGSCORE -> {
-                return new StAvgExamScoreComp();
-            }
-            default -> {
-                return null;
-            }
+            case SORTBYNAME:
+                studentComparator = new StFullNameComp();
+                break;
+            case SORTBYUNIVERSITYID:
+                studentComparator = new StUniversityIdComp();
+                break;
+            case SORTBYCOURSENUMBER:
+                studentComparator = new StCurrentCourseNumberComp();
+                break;
+            case SORTBYAVGSCORE:
+                studentComparator = new StAvgExamScoreComp();
+                break;
         }
+        return studentComparator;
     }
 
     public static UniversityComparator getUniversityComparator(UniversityComparators comparator) {
 
+        UniversityComparator universityComparator = null;
         logger.info("Choosing a \"University\" comparator");
         switch (comparator) {
-            case SORTBYID -> {
-                return new UnIdComp();
-            }
-            case SORTBYMAINPROFILE -> {
-                return new UnMainProfileComp();
-            }
-            case SORTBYSHORTNAME -> {
-                return new UnShortNameComp();
-            }
-            case SORTBYYEAROFFUNDUNATION -> {
-                return new UnYearOfFoundationComp();
-            }
-            case SOTRBYFULLNAME -> {
-                return new UnFullNameComp();
-            }
-            default -> {
-                return null;
-            }
+            case SORTBYID:
+                universityComparator = new UnIdComp();
+                break;
+            case SORTBYMAINPROFILE:
+                universityComparator = new UnMainProfileComp();
+                break;
+            case SORTBYSHORTNAME:
+                universityComparator = new UnShortNameComp();
+                break;
+            case SORTBYYEAROFFUNDUNATION:
+                universityComparator = new UnYearOfFoundationComp();
+                break;
+            case SOTRBYFULLNAME:
+                universityComparator = new UnFullNameComp();
+                break;
         }
+        return universityComparator;
     }
 }

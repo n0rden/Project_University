@@ -1,26 +1,35 @@
 package models;
 
 import com.google.gson.annotations.SerializedName;
+import jakarta.xml.bind.annotation.*;
 
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlType(propOrder = {"fullName", "universityId", "avgExamScore"})
 public class Student {
 
     @SerializedName("Full name")
+    @XmlElement
     private String fullName;
     @SerializedName("University ID")
+    @XmlElement
     private String universityId;
     @SerializedName("Course number")
+    @XmlTransient
     private int currentCourseNumber;
     @SerializedName("Average score")
+    @XmlElement
     private float avgExamScore;
 
     public Student() {
     }
+
     public Student(String universityId, String fullName, int currentCourseNumber, float avgExamScore) {
         this.universityId = universityId;
         this.fullName = fullName;
         this.currentCourseNumber = currentCourseNumber;
         this.avgExamScore = avgExamScore;
     }
+
 
     public Student setFullName(String fullName) {
         this.fullName = fullName;
@@ -31,6 +40,7 @@ public class Student {
         this.universityId = universityId;
         return this;
     }
+
 
     public Student setCurrentCourseNumber(int currentCourseNumber) {
         this.currentCourseNumber = currentCourseNumber;
@@ -60,11 +70,7 @@ public class Student {
 
     @Override
     public String toString() {
-        return String.format("""
-                        Full name: %s
-                        university ID: %s
-                        current course number: %d
-                        avg exam score: %.1f
-                        """, fullName, universityId, currentCourseNumber, avgExamScore);
+        return String.format("Full name: %s university ID: %s current course number: %d avg exam score: %.1f",
+                fullName, universityId, currentCourseNumber, avgExamScore);
     }
 }

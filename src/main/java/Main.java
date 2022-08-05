@@ -1,11 +1,12 @@
+import jakarta.xml.bind.JAXBException;
+
 import models.Statistics;
 import models.Student;
 import models.University;
-import utils.ExcelReader;
-import utils.GetStatistics;
-import utils.GetStatisticsStream;
-import utils.XlsWriter;
+import models.XmlStructure;
+import utils.*;
 
+import java.io.File;
 import java.util.logging.*;
 import java.util.List;
 
@@ -19,8 +20,11 @@ public class Main {
 
     private static Logger logger = Logger.getLogger(Main.class.getName());
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws JAXBException {
+        File file = new File("resultXML.xml");
+
         logger.info("Start program");
+
         String fileName = "src\\main\\resources\\universityInfo.xlsx";
         String fileNameToSave = "src\\main\\resources\\statistics.xlsx";
 
@@ -29,9 +33,14 @@ public class Main {
         List<University> universitiesList = ExcelReader.universityReader(fileName);
 
         // Генерируем элементы статистики и записываем их в xlsx файл
-        List<Statistics> statistics = GetStatistics.getStatistics(universitiesList, studentsList);
-        XlsWriter.tableGenerateAndWrite(statistics, fileNameToSave);
+        List<Statistics> statisticsList = GetStatistics.getStatistics(universitiesList, studentsList);
+        XlsWriter.tableGenerateAndWrite(statisticsList, fileNameToSave);
 
-        GetStatisticsStream.getStatistics(universitiesList, studentsList);
+        // Создаем объект XML структуры
+        XmlStructure xmlObject = new XmlStructure(studentsList, universitiesList, statisticsList);
+
+        // Генерируем XML файл из объекта XML структуры
+        ToXML.saveObject(file, xmlObject);
+        //GetStatisticsStream.getStatistics(universitiesList, studentsList);
     }
 }

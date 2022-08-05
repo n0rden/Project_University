@@ -1,19 +1,27 @@
 package models;
 
 import com.google.gson.annotations.SerializedName;
+import jakarta.xml.bind.annotation.*;
 import enums.StudyProfile;
 
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlType(propOrder = {"id", "fullName", "mainProfile"})
 public class University {
 
     @SerializedName("University ID")
+    @XmlElement
     private String id;
     @SerializedName("University name")
+    @XmlElement
     private String fullName;
     @SerializedName("University abbreviation")
+    @XmlTransient
     private String shortName;
     @SerializedName("Foundation year")
+    @XmlTransient
     private int yearOfFoundation;
     @SerializedName("Study profile")
+    @XmlElement
     private StudyProfile mainProfile;
 
     public University(String toString, String s, String string, double numericCellValue) {
@@ -36,6 +44,7 @@ public class University {
         this.fullName = fullName;
         return this;
     }
+
 
     public University setShortName(String shortName) {
         this.shortName = shortName;
@@ -74,12 +83,7 @@ public class University {
 
     @Override
     public String toString() {
-        return String.format("""
-                        Id: %s
-                        full name: %s
-                        short name: %s
-                        year of foundation: %d
-                        main profile: %s
-                        """, id, fullName, shortName, yearOfFoundation, mainProfile.getSpecialty());
+        return String.format("Id: %s full name: %s short name: %s year of foundation: %d main profile: %s",
+                id, fullName, shortName, yearOfFoundation, mainProfile.getSpecialty());
     }
 }

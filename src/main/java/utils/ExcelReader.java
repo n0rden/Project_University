@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import com.sun.xml.txw2.annotation.XmlElement;
 import enums.StudyProfile;
 import models.Student;
 import models.University;
@@ -18,16 +19,18 @@ import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
+
 public class ExcelReader {
+    static List<Student> studentsList;
+    static List<University> universityList;
 
     private static Logger logger = Logger.getLogger(ExcelReader.class.getName());
 
     private ExcelReader() {
     }
-
     public static List<Student> studentsReader(String fileName) {
         logger.info("Start parsing \"Students\" from XLSX file");
-        List<Student> studentsList = new ArrayList<>();
+        studentsList = new ArrayList<>();
 
         try (InputStream is = new FileInputStream(fileName)) {
             XSSFWorkbook workbook = new XSSFWorkbook(is);
@@ -54,7 +57,7 @@ public class ExcelReader {
 
     public static List<University> universityReader(String fileName) {
         logger.info("Start parsing \"University\" from XLSX file");
-        List<University> universityList = new ArrayList<>();
+        universityList = new ArrayList<>();
 
         try (InputStream is = new FileInputStream(fileName)) {
             XSSFWorkbook workbook = new XSSFWorkbook(is);
