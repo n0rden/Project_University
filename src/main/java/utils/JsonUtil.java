@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import models.Student;
 import models.University;
+
 import java.util.Arrays;
 import java.util.List;
 import java.util.logging.Logger;
@@ -11,10 +12,12 @@ import java.util.logging.Logger;
 public class JsonUtil {
 
     private static Logger logger = Logger.getLogger(JsonUtil.class.getName());
+
     private JsonUtil() {
     }
 
     // Serialization methods
+    /*
     public static String studentSerialization(Student student) {
 
         logger.info("Start \"Student\" to JSON serialization");
@@ -40,6 +43,13 @@ public class JsonUtil {
         logger.info("Start \"University\" list to JSON serialization");
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
         return gson.toJson(universitiesList);
+    }
+    */
+
+    public static <E> String universalSerializer(List<E> list) {
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        logger.info("Serialization complete");
+        return gson.toJson(list);
     }
 
     // Deserialization methods

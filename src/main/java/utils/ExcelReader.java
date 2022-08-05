@@ -52,6 +52,7 @@ public class ExcelReader {
             logger.log(Level.SEVERE, "Student parsing error message", e);
             e.printStackTrace();
         }
+        logger.info("Parsing \"Students\" from XLSX file complete");
         return studentsList;
     }
 
@@ -80,7 +81,7 @@ public class ExcelReader {
             logger.log(Level.SEVERE, "University parsing error message", e);
             e.printStackTrace();
         }
-
+        logger.info("Parsing \"University\" from XLSX file complete");
         return universityList;
     }
 }

@@ -1,6 +1,6 @@
 comparators\StudentComparator.class
-utils\ToXML.class
 comparators\StCurrentCourseNumberComp.class
+utils\XmlWriter.class
 utils\GetComparatorFromEnum.class
 utils\XlsWriter.class
 enums\StudyProfile.class
@@ -9,12 +9,12 @@ comparators\UnMainProfileComp.class
 Main.class
 models\University.class
 enums\StudentsComparators.class
-utils\ToJson.class
 comparators\StAvgExamScoreComp.class
 comparators\StFullNameComp.class
 enums\UniversityComparators.class
 comparators\UnFullNameComp.class
 models\Statistics.class
+utils\JsonWriter.class
 comparators\UniversityComparator.class
 utils\ExcelReader.class
 utils\JsonUtil.class
