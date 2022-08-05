@@ -40,7 +40,7 @@ public class Main {
         XmlStructure xmlObject = new XmlStructure(studentsList, universitiesList, statisticsList);
 
         // Генерируем XML файл из объекта XML структуры
-        ToXML.saveObject(file, xmlObject);
+        XmlWriter.saveObject(file, xmlObject);
         //GetStatisticsStream.getStatistics(universitiesList, studentsList);
     }
 }

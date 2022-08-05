@@ -8,16 +8,16 @@ import jakarta.xml.bind.annotation.*;
 public class Student {
 
     @SerializedName("Full name")
-    @XmlElement
+    @XmlElement(name = "studentName")
     private String fullName;
     @SerializedName("University ID")
-    @XmlElement
+    @XmlElement(name = "universityId")
     private String universityId;
     @SerializedName("Course number")
     @XmlTransient
     private int currentCourseNumber;
     @SerializedName("Average score")
-    @XmlElement
+    @XmlElement(name = "avgScore")
     private float avgExamScore;
 
     public Student() {

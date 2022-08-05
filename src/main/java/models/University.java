@@ -9,10 +9,10 @@ import enums.StudyProfile;
 public class University {
 
     @SerializedName("University ID")
-    @XmlElement
+    @XmlElement(name = "universityId")
     private String id;
     @SerializedName("University name")
-    @XmlElement
+    @XmlElement(name = "universityName")
     private String fullName;
     @SerializedName("University abbreviation")
     @XmlTransient
@@ -21,7 +21,7 @@ public class University {
     @XmlTransient
     private int yearOfFoundation;
     @SerializedName("Study profile")
-    @XmlElement
+    @XmlElement(name = "universityProfile")
     private StudyProfile mainProfile;
 
     public University(String toString, String s, String string, double numericCellValue) {

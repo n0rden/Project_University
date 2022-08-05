@@ -1,14 +1,24 @@
 package models;
 
+import com.google.gson.annotations.SerializedName;
 import enums.StudyProfile;
+import jakarta.xml.bind.annotation.*;
+
 import java.util.Optional;
 
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlType(propOrder = {"mainProfile", "avgExamScore"})
 public class Statistics {
 
+    @XmlElement (name = "universityProfile")
     StudyProfile mainProfile;
+    @XmlElement(name = "avgScore")
     double avgExamScore;
+    @XmlTransient
     int numberOfStudentsByProfile;
+    @XmlTransient
     int numberOfUniversitiesByProfile;
+    @XmlTransient
     String universityName;
 
 

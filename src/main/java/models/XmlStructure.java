@@ -1,16 +1,19 @@
+// Структура итогового XML файла
+
 package models;
 
 import jakarta.xml.bind.annotation.*;
 
 import java.util.List;
 
-@XmlRootElement(name = "root")
-@XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(propOrder = {"students","universities","statistics", "currentDateTime"})
+@XmlRootElement(name = "root") // имя "корня"
+@XmlAccessorType(XmlAccessType.FIELD) // для парсинга используем поля
+@XmlType(propOrder = {"students", "universities", "statistics", "currentDateTime"})
+// порядок следования элементов в файле
 public class XmlStructure {
 
-    @XmlElementWrapper(name = "studentsInfo")
-    @XmlElement(name = "studentEntry")
+    @XmlElementWrapper(name = "studentsInfo") // обертка над списком
+    @XmlElement(name = "studentEntry") // наименование элемента в файле
     List<Student> students;
     @XmlElementWrapper(name = "universitiesInfo")
     @XmlElement(name = "universityEntry")
