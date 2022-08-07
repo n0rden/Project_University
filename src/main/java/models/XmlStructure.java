@@ -4,16 +4,22 @@ package models;
 
 import jakarta.xml.bind.annotation.*;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
+import java.util.TimeZone;
 
-@XmlRootElement(name = "root") // имя "корня"
-@XmlAccessorType(XmlAccessType.FIELD) // для парсинга используем поля
-@XmlType(propOrder = {"students", "universities", "statistics", "currentDateTime"})
+// имя "корня"
+@XmlRootElement(name = "root")
+// для парсинга используем поля
+@XmlAccessorType(XmlAccessType.FIELD)
 // порядок следования элементов в файле
+@XmlType(propOrder = {"students", "universities", "statistics", "currentDateTime"})
+
 public class XmlStructure {
 
     @XmlElementWrapper(name = "studentsInfo") // обертка над списком
-    @XmlElement(name = "studentEntry") // наименование элемента в файле
+    @XmlElement(name = "studentEntry") // наименование элемента в XML файле
     List<Student> students;
     @XmlElementWrapper(name = "universitiesInfo")
     @XmlElement(name = "universityEntry")
@@ -23,16 +29,22 @@ public class XmlStructure {
     List<Statistics> statistics;
 
     @XmlElement(name = "processedAt")
-    Long currentDateTime = 1451665447567L;
+    String currentDateTime;
 
     public XmlStructure() {
 
     }
 
     public XmlStructure(List<Student> students, List<University> universities, List<Statistics> statistics) {
+
         this.students = students;
         this.universities = universities;
         this.statistics = statistics;
+
+        final Date currentTime = new Date();
+        final SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS");
+        sdf.setTimeZone(TimeZone.getTimeZone("GMT"));
+        currentDateTime = sdf.format(currentTime).toString();
     }
 
     public List<Student> getStudents() {
@@ -59,11 +71,6 @@ public class XmlStructure {
 
     public XmlStructure setStatistics(List<Statistics> statistics) {
         this.statistics = statistics;
-        return this;
-    }
-
-    public XmlStructure setCurrentDateTime(Long currentDateTime) {
-        this.currentDateTime = currentDateTime;
         return this;
     }
 }
