@@ -4,13 +4,10 @@ package models;
 
 import jakarta.xml.bind.annotation.*;
 
-import java.text.SimpleDateFormat;
-import java.time.LocalDateTime;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Date;
 import java.util.List;
-import java.util.TimeZone;
+
 
 // имя "корня"
 @XmlRootElement(name = "root")
