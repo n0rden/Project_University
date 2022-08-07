@@ -5,6 +5,9 @@ package models;
 import jakarta.xml.bind.annotation.*;
 
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.List;
 import java.util.TimeZone;
@@ -41,10 +44,11 @@ public class XmlStructure {
         this.universities = universities;
         this.statistics = statistics;
 
-        final Date currentTime = new Date();
-        final SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS");
-        sdf.setTimeZone(TimeZone.getTimeZone("GMT"));
-        currentDateTime = sdf.format(currentTime).toString();
+        ZonedDateTime time = ZonedDateTime.now();
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSSxxxxx");
+        String dataTimeStr = dtf.format(time);
+
+        currentDateTime = dataTimeStr;
     }
 
     public List<Student> getStudents() {
